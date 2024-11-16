@@ -11,12 +11,16 @@ import CuentaPage from "./pages/CuentaPage";
 import { SalonProvider } from "./context/SalonContent.jsx";
 import NavBar from "./components/Navbar.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import Curso from "./pages/Curso.jsx";
+import CursoForn from "./pages/CursoForn.jsx";
+import { CursoProvider } from "./context/CursoContent.jsx";
 
 
 function App() {
   return (
     <AuthProvider>
       <SalonProvider>
+      <CursoProvider>
         <BrowserRouter>
           <NavBar/>
           <main className="container mx-auto px-10">
@@ -29,15 +33,23 @@ function App() {
 
               <Route element={<ProtectedRoute />}>
                 <Route path="/dashboard" element={<Dashboard />} />
+
                 <Route path="/salon" element={<SalonesPage />} />
                 <Route path="/agregar-salon" element={<SalonFormPage />} />
                 <Route path="/salon/:id" element={<SalonFormPage />} />
+
                 <Route path="/cuenta" element={<CuentaPage />} />
+                
+                <Route path="/curso" element={<Curso />} />
+                <Route path="/agregar-curso" element={<CursoForn />} />
+                <Route path="/curso/:id" element={<CursoForn />} />
+                
               </Route>
             </Routes>
             
             </main>
         </BrowserRouter>
+        </CursoProvider>
       </SalonProvider>
     </AuthProvider>
 

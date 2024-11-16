@@ -7,6 +7,8 @@ import authRoutes from "./routes/auth.routes.js";
 
 import salonesRoutes from "./routes/salon.routes.js";
 
+import cursosRoutes from "./routes/curso.routes.js";
+
 const app = express()
 
 app.use(cors({
@@ -22,6 +24,7 @@ app.use(cookieParser());
 
 app.use("/api", authRoutes);
 app.use("/api", salonesRoutes);
+app.use("/api", cursosRoutes);
 
 
 export default app;

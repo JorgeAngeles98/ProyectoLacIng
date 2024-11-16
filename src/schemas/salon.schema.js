@@ -6,5 +6,8 @@ export const createSalonSchema = z.object({
     descripcion: z.string({
         required_error: "La descripcion es requerida",
     }),
+
     date: z.string().datetime().optional(),
+    capacidad: z.number().optional(),
+    codigo: z.string().optional(),
 });
