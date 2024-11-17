@@ -14,6 +14,8 @@ import Dashboard from "./pages/Dashboard.jsx";
 import Curso from "./pages/Curso.jsx";
 import CursoForn from "./pages/CursoForn.jsx";
 import { CursoProvider } from "./context/CursoContent.jsx";
+import Profesor from "./pages/Profesor.jsx";
+import ProfesorForm from "./pages/ProfesorForm.jsx";
 
 
 function App() {
@@ -43,6 +45,10 @@ function App() {
                 <Route path="/curso" element={<Curso />} />
                 <Route path="/agregar-curso" element={<CursoForn />} />
                 <Route path="/curso/:id" element={<CursoForn />} />
+
+                <Route path="/profesor" element={<Profesor />} />
+                <Route path="/agregar-profesor" element={<ProfesorForm />} />
+                <Route path="/profesor/:id" element={<ProfesorForm />} />
                 
               </Route>
             </Routes>
