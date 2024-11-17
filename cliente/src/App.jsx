@@ -16,6 +16,7 @@ import CursoForn from "./pages/CursoForn.jsx";
 import { CursoProvider } from "./context/CursoContent.jsx";
 import Profesor from "./pages/Profesor.jsx";
 import ProfesorForm from "./pages/ProfesorForm.jsx";
+import { ProfesorProvider } from "./context/ProfesorContent.jsx";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
     <AuthProvider>
       <SalonProvider>
       <CursoProvider>
+      <ProfesorProvider>
         <BrowserRouter>
           <NavBar/>
           <main className="container mx-auto px-10">
@@ -55,6 +57,7 @@ function App() {
             
             </main>
         </BrowserRouter>
+        </ProfesorProvider>
         </CursoProvider>
       </SalonProvider>
     </AuthProvider>
