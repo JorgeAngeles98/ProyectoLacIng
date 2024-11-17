@@ -51,30 +51,12 @@ function SalonFormPage() {
             autoFocus
           />
 
-          <label htmlFor="nombre">descripcion: </label>
+          <label htmlFor="descripcion">descripcion: </label>
           <textarea rows="3"
             placeholder='Descripcion'
             {...register('descripcion')}
             className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
           ></textarea>
-
-          <label htmlFor="capacidad">Capacidad: </label>
-          <input
-            type='number'
-            placeholder='Capacidad'
-            {...register('capacidad')}
-            className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
-            autoFocus
-          />
-
-          <label htmlFor="codigo">Codigo: </label>
-          <input
-            type='text'
-            placeholder='Codigo'
-            {...register('codigo')}
-            className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
-            autoFocus
-          />
 
           <button className="bg-indigo-500 px-3 py-2 my-2 rounded-md">Guardar</button>
         </form>
