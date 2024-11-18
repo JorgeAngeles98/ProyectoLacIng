@@ -17,6 +17,9 @@ function SalonFormPage() {
         console.log(salon);
         setValue('nombre', salon.nombre);
         setValue('descripcion', salon.descripcion);
+        setValue('capacidad', salon.capacidad);
+        setValue('codigo', salon.codigo);
+        
       }
     }
     loadSalon();
@@ -34,8 +37,11 @@ function SalonFormPage() {
 
   return (
     <dir className="flex h-[calc(100vh-100px)] items-center justify-center">
-      <div className='bg-zinc-800 max-w-md w-full p-10 rounded-md'>
+      <div className='bg-zinc-800 max-w-md w-full p-8 rounded-md'>
         <form onSubmit={onSubmit}>
+
+          <h2 className="text-3xl font-bold my-2">Formulario Salon</h2>
+
           <label htmlFor="nombre">nombre: </label>
           <input
             type='text'
@@ -52,7 +58,25 @@ function SalonFormPage() {
             className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
           ></textarea>
 
-          <button className="bg-indigo-500 px-3 py-2 rounded-md">Guardar</button>
+          <label htmlFor="capacidad">Capacidad: </label>
+          <input
+            type='number'
+            placeholder='Capacidad'
+            {...register('capacidad')}
+            className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+            autoFocus
+          />
+
+          <label htmlFor="codigo">Codigo: </label>
+          <input
+            type='text'
+            placeholder='Codigo'
+            {...register('codigo')}
+            className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+            autoFocus
+          />
+
+          <button className="bg-indigo-500 px-3 py-2 my-2 rounded-md">Guardar</button>
         </form>
       </div>
     </dir>

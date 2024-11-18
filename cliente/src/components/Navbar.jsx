@@ -7,7 +7,7 @@ function Navbar() {
 
     return (
         <div>
-            <div className='bg-emerald-700 flex justify-between py-1 px-10'>
+            <div className='bg-emerald-700 flex justify-between py-2 px-10'>
                 <p className=' text-2xs font-bold'>Universidad Ricardo Palma</p>
 
                 <ul className='flex gap-x-2'>{isAuthenticated ? (
@@ -42,6 +42,12 @@ function Navbar() {
 
                         <li>
                             <Link to='/salon' className='bg-emerald-800 hover:bg-emerald-950 px-4 py-1 rounded-sm'>Salones</Link>
+                        </li>
+                        <li>
+                            <Link to='/curso' className='bg-emerald-800 hover:bg-emerald-950 px-4 py-1 rounded-sm'>Cursos</Link>
+                        </li>
+                        <li>
+                            <Link to='/profesor' className='bg-emerald-800 hover:bg-emerald-950 px-4 py-1 rounded-sm'>Profesores</Link>
                         </li>
                     </>
                 ) : (

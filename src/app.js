@@ -6,6 +6,10 @@ import cors from "cors";
 import authRoutes from "./routes/auth.routes.js";
 
 import salonesRoutes from "./routes/salon.routes.js";
+
+import cursosRoutes from "./routes/curso.routes.js";
+
+import profesoresRoutes from "./routes/profesor.routes.js";
 import alumnosRoutes from "./routes/alumno.routes.js";
 
 const app = express()
@@ -23,6 +27,8 @@ app.use(cookieParser());
 
 app.use("/api", authRoutes);
 app.use("/api", salonesRoutes);
+app.use("/api", cursosRoutes);
+app.use("/api", profesoresRoutes);
 app.use("/api", alumnosRoutes)
 
 
