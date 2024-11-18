@@ -1,6 +1,7 @@
 import { useAlumno } from '../../context/AlumnoContext';
 import { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 function GestionarAlumnos() {
   const { getAlumnos, alumnos, deleteAlumno } = useAlumno();
@@ -47,8 +48,14 @@ function GestionarAlumnos() {
                     Editar
                   </button>
                   <button 
-                    onClick={() => deleteAlumno(alumno._id)} 
-                    className='bg-red-600 text-white px-3 py-1 rounded'>
+                    onClick={() => {
+                      if (window.confirm('¿Estás seguro de que deseas eliminar este alumno?')) {
+                        deleteAlumno(alumno._id);
+                        toast.success('Alumno eliminado con éxito');
+                      }
+                    }} 
+                    className='bg-red-600 text-white px-3 py-1 rounded'
+                  >
                     Eliminar
                   </button>
                 </td>

@@ -48,8 +48,10 @@ function AlumnoForm() {
     
         if (mode === 'edit' && id) {
           await updateAlumno(id, cleanedData);
+          toast.success('Alumno editado con éxito');
         } else if (mode === 'create') {
           await createAlumno(cleanedData);
+          toast.success('Alumno creado con éxito');
         }
         navigate('/listado-alumnos');
 

@@ -56,21 +56,10 @@ export function AlumnoProvider({ children }) {
 
     const updateAlumno = async (id, alumno) => {
         try {
-            await updateAlumnoRequest(id, alumno);
-            setErrors({}); // Limpiar errores en caso de éxito
+            const res = await updateAlumnoRequest(id, alumno);
+            return res;
         } catch (error) {
-            console.error(error);
-            // Comprobar si el error proviene de una validación
-            if (error.response && error.response.data) {
-                // Si hay errores de validación del backend
-                error.response.data.forEach((errMessage) => {
-                    // Mostrar cada mensaje de error recibido
-                    toast.error(errMessage); // Usamos toast.error para mostrar un mensaje de error
-                });
-            } else {
-                // Si no es un error de validación, mostramos un error general
-                toast.error("Ha ocurrido un error en el servidor.");
-            }
+            throw error;
         }
     }
 
