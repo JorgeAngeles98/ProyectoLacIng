@@ -15,7 +15,7 @@ import { AlumnoProvider } from "./context/AlumnoContext.jsx";
 import NavBar from "./components/Navbar.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import GestionarAlumnos from "./pages/Pages-Alumno/GestionarAlumnos.jsx";
-import AgregarAlumno from "./pages/Pages-Alumno/AgregarAlumno.jsx";
+import AlumnoForm from "./pages/Pages-Alumno/AlumnoForm.jsx";
 
 
 function App() {
@@ -39,8 +39,10 @@ function App() {
                   <Route path="/agregar-salon" element={<SalonFormPage />} />
                   <Route path="/salon/:id" element={<SalonFormPage />} />
                   <Route path="/cuenta" element={<CuentaPage />} />
-                  <Route path="/ver-alumnos" element={<GestionarAlumnos/>}/>
-                  <Route path="/agregar-alumno" element={<AgregarAlumno/>}/>
+                  <Route path="/listado-alumnos" element={<GestionarAlumnos/>}/>
+                  <Route path="/ver-alumno/:id" element={<AlumnoForm/>}/>
+                  <Route path="/agregar-alumno" element={<AlumnoForm/>}/>
+                  <Route path="/editar-alumno/:id" element={<AlumnoForm/>}/>
                 </Route>
               </Routes>
               

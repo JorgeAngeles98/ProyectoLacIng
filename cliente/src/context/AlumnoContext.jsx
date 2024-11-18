@@ -54,7 +54,7 @@ export function AlumnoProvider({ children }) {
         }
     };
 
-    const actualizarAlumno = async (id, alumno) => {
+    const updateAlumno = async (id, alumno) => {
         try {
             await updateAlumnoRequest(id, alumno);
             setErrors({}); // Limpiar errores en caso de éxito
@@ -81,7 +81,7 @@ export function AlumnoProvider({ children }) {
             getAlumnos,
             deleteAlumno,
             getAlumno,
-            actualizarAlumno,
+            updateAlumno,
         }}>
             {children}
         </AlumnoContext.Provider>
