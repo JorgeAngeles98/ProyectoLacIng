@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Importar los estilos
 
 import RegistroPage from "./pages/RegistroPage";
 import LoginPage from "./pages/LoginPage";
@@ -41,10 +43,11 @@ function App() {
 
               <Route element={<ProtectedRoute />}>
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/cuenta" element={<CuentaPage />} />
+
                 <Route path="/salon" element={<SalonesPage />} />
                 <Route path="/agregar-salon" element={<SalonFormPage />} />
                 <Route path="/salon/:id" element={<SalonFormPage />} />
-                <Route path="/cuenta" element={<CuentaPage />} />
 
                 <Route path="/curso" element={<Curso />} />
                 <Route path="/agregar-curso" element={<CursoForn />} />
@@ -55,9 +58,9 @@ function App() {
                 <Route path="/profesor/:id" element={<ProfesorForm />} />
 
                 <Route path="/listado-alumnos" element={<GestionarAlumnos/>}/>
-                  <Route path="/ver-alumno/:id" element={<AlumnoForm/>}/>
-                  <Route path="/agregar-alumno" element={<AlumnoForm/>}/>
-                  <Route path="/editar-alumno/:id" element={<AlumnoForm/>}/>
+                <Route path="/ver-alumno/:id" element={<AlumnoForm/>}/>
+                <Route path="/agregar-alumno" element={<AlumnoForm/>}/>
+                <Route path="/editar-alumno/:id" element={<AlumnoForm/>}/>
 
               </Route>
             </Routes>
