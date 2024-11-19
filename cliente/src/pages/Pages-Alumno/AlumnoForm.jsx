@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 function AlumnoForm() {
   const { register, handleSubmit, setValue } = useForm();
   const { createAlumno, getAlumno, updateAlumno } = useAlumno();
+  const [cursos, setCursos] = useState([]);
   const navigate = useNavigate();
   const { id } = useParams();
   const location = useLocation();
@@ -23,14 +24,16 @@ function AlumnoForm() {
   useEffect(() => {
     async function loadAlumno() {
       if (id) {
-        const alumno = await getAlumno(id);
-        if (alumno) {
-          setValue('nombreAlu', alumno.nombreAlu);
-          setValue('apellidoAlu', alumno.apellidoAlu);
-          setValue('codigo', alumno.codigo);
-          setValue('dni', alumno.dni);
-          setValue('facultad', alumno.facultad);
-          setValue('correoInst', alumno.correoInst);
+        const response = await getAlumno(id); 
+        if (response) {
+          setValue('nombreAlu', response.alumno.nombreAlu);
+          setValue('apellidoAlu', response.alumno.apellidoAlu);
+          setValue('codigo', response.alumno.codigo);
+          setValue('dni', response.alumno.dni);
+          setValue('facultad', response.alumno.facultad);
+          setValue('correoInst', response.alumno.correoInst);
+
+          setCursos(response.cursos);
         }
       }
     }
@@ -139,6 +142,32 @@ function AlumnoForm() {
           {mode !== 'view' && (
             <button className='bg-green-800 px-3 py-2 rounded-md w-full mt-4'>Guardar</button>
           )}
+
+            {cursos.length > 0 && (
+            <div className="mt-6">
+                <h2 className="text-2xl mb-4">Cursos Inscritos</h2>
+                <table className="min-w-full bg-zinc-700 text-white">
+                <thead>
+                    <tr>
+                    <th className="px-4 py-2">Curso</th>
+                    <th className="px-4 py-2">Salón</th>
+                    <th className="px-4 py-2">Profesor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {cursos.map((curso, index) => (
+                    <tr key={index}>
+                        <td className="px-4 py-2">{curso.nombre}</td>
+                        <td className="px-4 py-2">{curso.salon ? curso.salon.nombre : 'Sin salón asignado'}</td>
+                        <td className="px-4 py-2">{curso.profesor ? `${curso.profesor.nombre} ${curso.profesor.apellido}` : 'Sin profesor asignado'}</td>
+                    </tr>
+                    ))}
+                </tbody>
+                </table>
+            </div>
+            )}
+
+
         </form>
       </div>
     </div>

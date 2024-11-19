@@ -1,4 +1,5 @@
 import Alumno from "../models/alumno.model.js";
+import Curso from '../models/curso.model.js';
 import { z } from 'zod';
 
 export const getAlumnos = async (req, res) => {
@@ -36,9 +37,14 @@ export const getAlumno = async (req, res) => {
     try {
         const alumno = await Alumno.findById(req.params.id);
         if (!alumno) return res.status(404).json({ message: "Alumno no encontrado" });
-        res.json(alumno);
+        // Buscar los cursos en los que está inscrito y poblar la información del salón
+        const cursos = await Curso.find({ alumnos: alumno._id }).populate('salon').populate('profesor','nombre apellido');
+        return res.json({
+            alumno,
+            cursos
+        });
     } catch (error) {
-        return res.status(404).json({ message: "Alumno no encontrado" });
+        return res.status(500).json({ message: 'Error al obtener la información', error });
     }
 };
 
