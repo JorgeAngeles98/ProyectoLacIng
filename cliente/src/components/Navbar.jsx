@@ -53,6 +53,9 @@ function Navbar() {
                 ) : (
                     <>
                         <li>
+                            <Link to='/verificar-alumno' className='bg-emerald-800 hover:bg-emerald-950 px-4 py-1 rounded-sm'>Verificar Alumno</Link>
+                        </li>
+                        <li>
                             <Link to='/login' className='bg-emerald-800 hover:bg-emerald-950 px-4 py-1 rounded-sm'>Login</Link>
                         </li>
                         <li>

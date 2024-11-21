@@ -48,6 +48,25 @@ export const getAlumno = async (req, res) => {
     }
 };
 
+export const getAlumnoPorCodigo = async (req, res) => {
+    try {
+        const { codigo } = req.params;
+        const alumno = await Alumno.findOne({ codigo });
+        if (!alumno) return res.status(404).json({ message: "Alumno no encontrado" });
+
+        const cursos = await Curso.find({ alumnos: alumno._id })
+            .populate('salon')
+            .populate('profesor', 'nombre apellido');
+
+        return res.json({
+            alumno,
+            cursos,
+        });
+    } catch (error) {
+        return res.status(500).json({ message: 'Error al obtener la información', error });
+    }
+};
+
 export const updateAlumno = async (req, res) => {
     try {
         const updatedAlumno = await Alumno.findByIdAndUpdate(req.params.id, req.body, { new: true });

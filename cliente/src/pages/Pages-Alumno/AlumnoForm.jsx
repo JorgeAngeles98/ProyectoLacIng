@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 function AlumnoForm() {
   const { register, handleSubmit, setValue } = useForm();
-  const { createAlumno, getAlumno, updateAlumno } = useAlumno();
+  const { createAlumno, getAlumnoPorId, updateAlumno } = useAlumno();
   const [cursos, setCursos] = useState([]);
   const navigate = useNavigate();
   const { id } = useParams();
@@ -24,7 +24,7 @@ function AlumnoForm() {
   useEffect(() => {
     async function loadAlumno() {
       if (id) {
-        const response = await getAlumno(id); 
+        const response = await getAlumnoPorId(id); 
         if (response) {
           setValue('nombreAlu', response.alumno.nombreAlu);
           setValue('apellidoAlu', response.alumno.apellidoAlu);
@@ -38,7 +38,7 @@ function AlumnoForm() {
       }
     }
     loadAlumno();
-  }, [id, setValue, getAlumno]);
+  }, [id, setValue, getAlumnoPorId]);
 
   const onSubmit = handleSubmit(async (data) => {
     try {
@@ -143,6 +143,7 @@ function AlumnoForm() {
             <button className='bg-green-800 px-3 py-2 rounded-md w-full mt-4'>Guardar</button>
           )}
 
+          {/* Tabla Cursos Inscritos */}
             {cursos.length > 0 && (
             <div className="mt-6">
                 <h2 className="text-2xl mb-4">Cursos Inscritos</h2>
@@ -158,7 +159,7 @@ function AlumnoForm() {
                     {cursos.map((curso, index) => (
                     <tr key={index}>
                         <td className="px-4 py-2">{curso.nombre}</td>
-                        <td className="px-4 py-2">{curso.salon ? curso.salon.nombre : 'Sin salón asignado'}</td>
+                        <td className="px-4 py-2">{curso.salon ? curso.salon[0].nombre : 'Sin salón asignado'}</td>
                         <td className="px-4 py-2">{curso.profesor ? `${curso.profesor.nombre} ${curso.profesor.apellido}` : 'Sin profesor asignado'}</td>
                     </tr>
                     ))}

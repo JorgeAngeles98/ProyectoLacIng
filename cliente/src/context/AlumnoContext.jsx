@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import PropTypes from 'prop-types';
-import { createAlumnoRequest, getListaAlumnosRequest, deleteAlumnoRequest, getAlumnoRequest, updateAlumnoRequest } from "../api/alumno";
+import { createAlumnoRequest, getListaAlumnosRequest, deleteAlumnoRequest, getAlumnoRequest, getAlumnoPorCodigoRequest, updateAlumnoRequest } from "../api/alumno";
 
 
 const AlumnoContext = createContext();
@@ -45,9 +45,18 @@ export function AlumnoProvider({ children }) {
         }
     }
 
-    const getAlumno = async (id) => {
+    const getAlumnoPorId = async (id) => {
         try {
             const res = await getAlumnoRequest(id);
+            return res.data;
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const getAlumnoPorCodigo = async (codigo) => {
+        try {
+            const res = await getAlumnoPorCodigoRequest(codigo);
             return res.data;
         } catch (error) {
             console.error(error);
@@ -69,7 +78,8 @@ export function AlumnoProvider({ children }) {
             createAlumno,
             getAlumnos,
             deleteAlumno,
-            getAlumno,
+            getAlumnoPorId,
+            getAlumnoPorCodigo,
             updateAlumno,
         }}>
             {children}
