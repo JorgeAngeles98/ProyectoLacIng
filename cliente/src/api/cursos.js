@@ -14,3 +14,9 @@ export const deleteCursosRequest =
 
 export const getCursoRequest = 
 (id) => axios.get(`/curso/${id}`);
+
+export const matricularAlumnoRequest = 
+(cursoId, alumnoId) => axios.post('/curso/matricular', { cursoId, alumnoId });
+
+export const eliminarAlumnodeCursoRequest = 
+(cursoId, alumnoId) => axios.post('/curso/eliminar-alumno', { cursoId, alumnoId });

@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import PropTypes from 'prop-types';
-import {createCursosRequest, getCursosRequest, deleteCursosRequest, getCursoRequest, updateCursosRequest } from "../api/cursos";
+import {createCursosRequest, getCursosRequest, deleteCursosRequest, getCursoRequest, updateCursosRequest, matricularAlumnoRequest, eliminarAlumnodeCursoRequest } from "../api/cursos";
 
 const CursoContext = createContext();
 
@@ -50,13 +50,31 @@ export function CursoProvider({children}){
         }
     };
 
-    const actuzaliarCurso = async (id, curso) => {
+    const actualizarCurso = async (id, curso) => {
         try{
             await updateCursosRequest(id, curso);
         }catch(error){
             console.error(error);
         }
             
+    }
+
+    const matricularAlumno = async (id, curso) => {
+        try{
+            const res = await matricularAlumnoRequest(id, curso);
+            return res;
+        }catch(error){
+            throw error;
+        } 
+    }
+
+    const eliminarAlumnodeCurso = async (id, curso) => {
+        try{
+            const res = await eliminarAlumnodeCursoRequest(id, curso);
+            return res;
+        }catch(error){
+            throw error;
+        } 
     }
 
     return (
@@ -66,7 +84,9 @@ export function CursoProvider({children}){
             createCurso, 
             deleteCurso, 
             getCurso, 
-            actuzaliarCurso 
+            actualizarCurso,
+            matricularAlumno,
+            eliminarAlumnodeCurso
         }}>
             {children}
         </CursoContext.Provider>

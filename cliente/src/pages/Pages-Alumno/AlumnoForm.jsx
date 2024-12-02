@@ -3,6 +3,7 @@ import { useAlumno } from '../../context/AlumnoContext';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import CursosTable from '../../components/CursosTable';
 
 function AlumnoForm() {
   const { register, handleSubmit, setValue } = useForm();
@@ -71,7 +72,7 @@ function AlumnoForm() {
   });
 
   return (
-    <div className='flex h-[calc(100vh-100px)] items-center justify-center'>
+    <div className='flex items-center justify-center p-7 '>
       <div className='bg-zinc-800 max-w-md w-full p-7 rounded-md relative'>
         <form onSubmit={onSubmit}>
             {/* Botón para cerrar formulario */}
@@ -144,31 +145,7 @@ function AlumnoForm() {
           )}
 
           {/* Tabla Cursos Inscritos */}
-            {cursos.length > 0 && (
-            <div className="mt-6">
-                <h2 className="text-2xl mb-4">Cursos Inscritos</h2>
-                <table className="min-w-full bg-zinc-700 text-white">
-                <thead>
-                    <tr>
-                    <th className="px-4 py-2">Curso</th>
-                    <th className="px-4 py-2">Salón</th>
-                    <th className="px-4 py-2">Profesor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {cursos.map((curso, index) => (
-                    <tr key={index}>
-                        <td className="px-4 py-2">{curso.nombre}</td>
-                        <td className="px-4 py-2">{curso.salon ? curso.salon[0].nombre : 'Sin salón asignado'}</td>
-                        <td className="px-4 py-2">{curso.profesor ? `${curso.profesor.nombre} ${curso.profesor.apellido}` : 'Sin profesor asignado'}</td>
-                    </tr>
-                    ))}
-                </tbody>
-                </table>
-            </div>
-            )}
-
-
+          {cursos.length > 0 && <CursosTable cursos={cursos} />}
         </form>
       </div>
     </div>

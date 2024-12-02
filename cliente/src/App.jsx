@@ -23,6 +23,7 @@ import { ProfesorProvider } from "./context/ProfesorContent.jsx";
 import GestionarAlumnos from "./pages/Pages-Alumno/GestionarAlumnos.jsx";
 import AlumnoForm from "./pages/Pages-Alumno/AlumnoForm.jsx";
 import VerificarAlumno from "./pages/Pages-Alumno/VerificarAlumno.jsx";
+import MatricularAlumno from "./pages/Pages-Alumno/MatricularAlumno.jsx";
 
 
 function App() {
@@ -60,9 +61,9 @@ function App() {
                   <Route path="/profesor/:id" element={<ProfesorForm />} />
 
                   <Route path="/listado-alumnos" element={<GestionarAlumnos/>}/>
-                  <Route path="/ver-alumno/:id" element={<AlumnoForm/>}/>
-                  <Route path="/agregar-alumno" element={<AlumnoForm/>}/>
-                  <Route path="/editar-alumno/:id" element={<AlumnoForm/>}/>
+                  <Route path="/form-alumno" element={<AlumnoForm/>}/>
+                  <Route path="/form-alumno/:id" element={<AlumnoForm/>}/>
+                  <Route path="/matricular-alumno/:id" element={<MatricularAlumno/>}/>
 
                 </Route>
             </Routes>

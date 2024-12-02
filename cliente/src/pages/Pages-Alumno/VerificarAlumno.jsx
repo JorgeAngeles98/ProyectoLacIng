@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAlumno } from '../../context/AlumnoContext';
 import { toast } from 'react-toastify';
+import CursosTable from '../../components/CursosTable';
 
 function VerificarAlumno() {
     const { getAlumnoPorCodigo } = useAlumno();
@@ -21,7 +22,7 @@ function VerificarAlumno() {
         if (response) {
           setAlumnoData(response); // Guarda los datos del alumno
           console.log(response);
-          setCursoData(response.cursos);
+          setCursoData(response.cursos || []);
           toast.success('Alumno encontrado con éxito.');
         } else {
           toast.error('No se encontró un alumno con ese código.');
@@ -60,7 +61,7 @@ function VerificarAlumno() {
       {/* Detalles del alumno encontrado */}
       {alumnoData && (
         <div>
-            <h3 className='text-xl font-bold mb-2'>Detalles de Alumno</h3>
+            <h3 className='text-2xl mb-4'>Detalles de Alumno</h3>
             <div className='bg-gray-100 p-4 mb-6 text-black'>
                 <p><strong>Código:</strong> {alumnoData.alumno.codigo}</p>
                 <p><strong>Nombre:</strong> {alumnoData.alumno.nombreAlu}</p>
@@ -71,32 +72,13 @@ function VerificarAlumno() {
         </div>
         
       )}
-      
-        {cursoData && (
-            <div className='overflow-x-auto'>   
-                <h4 className='text-xl font-bold mt-4 mb-2'>Cursos</h4>
-                <table className='min-w-full bg-white border border-gray-300 text-slate-900'>
-                <thead>
-                    <tr className='bg-gray-100'>
-                    <th className='py-2 px-4 border-b'>Curso</th>
-                    <th className='py-2 px-4 border-b'>Salón</th>
-                    <th className='py-2 px-4 border-b'>Docente</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {cursoData.map((curso) => (
-                    <tr key={curso._id} className='text-center'>
-                        <td className='py-2 px-4 border-b text-left'>{curso.nombre}</td>
-                        <td className='py-2 px-4 border-b'>{curso.salon[0]?.nombre } </td>
-                        <td className='py-2 px-4 border-b text-left'>
-                        {curso.profesor ? `${curso.profesor.apellido}, ${curso.profesor.nombre}` : 'No asignado'}
-                        </td>
-                    </tr>
-                    ))}
-                </tbody>
-                </table>
-            </div>
-        )}
+
+        {/* Tabla cursos inscritos */}
+        <div>
+          {cursoData && (
+            <CursosTable cursos={cursoData} />
+          )}
+        </div>
     </div>
   );
 }

@@ -5,7 +5,9 @@ import {
     createCurso,
     getCurso,
     updateCurso,
-    deleteCurso
+    deleteCurso,
+    matricularAlumno,
+    eliminarAlumnodeCurso
 } from "../controllers/curso.controller.js";
 import { validatorSchema } from "../middlewares/validator.middlewares.js";
 import { createCursoSchema } from "../schemas/curso.schema.js";
@@ -17,5 +19,7 @@ router.get('/curso/:id', authRequired, getCurso);
 router.post('/curso', authRequired, validatorSchema(createCursoSchema), createCurso);
 router.delete('/curso/:id', authRequired, deleteCurso);
 router.put('/curso/:id', authRequired, updateCurso);
+router.post('/curso/matricular', authRequired, matricularAlumno);
+router.post('/curso/eliminar-alumno', authRequired, eliminarAlumnodeCurso);
 
 export default router;
