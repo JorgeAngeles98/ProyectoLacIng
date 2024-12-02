@@ -57,3 +57,52 @@ export const deleteCurso = async (req, res) => {
         return res.status(404).json({message: "Curso no encontrado"});
     }
 };
+
+// Controlador de Curso
+export const matricularAlumno = async (req, res) => {
+    try {
+      const { cursoId, alumnoId } = req.body;
+  
+      // Verificar si ya está matriculado
+      const curso = await Curso.findById(cursoId);
+      if (!curso) return res.status(404).json({ message: 'Curso no encontrado' });
+  
+      if (curso.alumnos.includes(alumnoId)) {
+        return res.status(400).json({ message: 'El alumno ya está matriculado en este curso' });
+      }
+  
+      // Agregar el alumno al curso
+      curso.alumnos.push(alumnoId);
+      await curso.save();
+  
+      res.status(200).json({ message: 'Alumno matriculado con éxito', curso });
+    } catch (error) {
+      res.status(500).json({ message: 'Error al matricular alumno', error });
+    }
+  };
+
+  // Controlador de Curso
+export const eliminarAlumnodeCurso = async (req, res) => {
+    try {
+      const { cursoId, alumnoId } = req.body;
+  
+      // Verificar si el curso existe
+      const curso = await Curso.findById(cursoId);
+      if (!curso) return res.status(404).json({ message: 'Curso no encontrado' });
+  
+      // Verificar si el alumno está matriculado
+      if (!curso.alumnos.includes(alumnoId)) {
+        return res.status(400).json({ message: 'El alumno no está matriculado en este curso' });
+      }
+  
+      // Eliminar al alumno del curso
+      curso.alumnos = curso.alumnos.filter(alumno => alumno.toString() !== alumnoId);
+      await curso.save();
+  
+      res.status(200).json({ message: 'Alumno eliminado del curso con éxito', curso });
+    } catch (error) {
+      res.status(500).json({ message: 'Error al eliminar alumno', error });
+    }
+  };
+  
+  

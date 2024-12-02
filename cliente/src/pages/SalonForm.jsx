@@ -17,8 +17,8 @@ function SalonFormPage() {
         console.log(salon);
         setValue('nombre', salon.nombre);
         setValue('descripcion', salon.descripcion);
-        setValue('capacidad', salon.capacidad);
-        setValue('codigo', salon.codigo);
+        /*setValue('capacidad', salon.capacidad);
+        setValue('codigo', salon.codigo);*/
         
       }
     }
@@ -57,6 +57,24 @@ function SalonFormPage() {
             {...register('descripcion')}
             className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
           ></textarea>
+
+          {/*<label htmlFor="capacidad">Capacidad: </label>
+          <input
+            type='number'
+            placeholder='Capacidad'
+            {...register('capacidad')}
+            className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+            autoFocus
+          />
+
+          <label htmlFor="codigo">Codigo: </label>
+          <input
+            type='text'
+            placeholder='Codigo'
+            {...register('codigo')}
+            className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+            autoFocus
+          />*/}
 
           <button className="bg-indigo-500 px-3 py-2 my-2 rounded-md">Guardar</button>
         </form>

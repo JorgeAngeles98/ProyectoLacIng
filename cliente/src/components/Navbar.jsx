@@ -37,14 +37,24 @@ function Navbar() {
                 <ul className='flex gap-x-2'>{isAuthenticated ? (
                     <>
                         <li>
+                            <Link to='/listado-alumnos' className='bg-emerald-800 hover:bg-emerald-950 px-4 py-1 rounded-sm'>Alumnos</Link>
+                        </li>
+
+                        <li>
                             <Link to='/salon' className='bg-emerald-800 hover:bg-emerald-950 px-4 py-1 rounded-sm'>Salones</Link>
                         </li>
                         <li>
                             <Link to='/curso' className='bg-emerald-800 hover:bg-emerald-950 px-4 py-1 rounded-sm'>Cursos</Link>
                         </li>
+                        <li>
+                            <Link to='/profesor' className='bg-emerald-800 hover:bg-emerald-950 px-4 py-1 rounded-sm'>Profesores</Link>
+                        </li>
                     </>
                 ) : (
                     <>
+                        <li>
+                            <Link to='/verificar-alumno' className='bg-emerald-800 hover:bg-emerald-950 px-4 py-1 rounded-sm'>Verificar Alumno</Link>
+                        </li>
                         <li>
                             <Link to='/login' className='bg-emerald-800 hover:bg-emerald-950 px-4 py-1 rounded-sm'>Login</Link>
                         </li>
