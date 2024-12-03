@@ -18,11 +18,13 @@ function CursosTable({ cursos }) {
             <tr key={index}>
               <td className="px-4 py-2">{curso?.nombre || 'Sin nombre'}</td>
               <td className="px-4 py-2">
-                {curso?.salon?.[0]?.nombre || 'Sin salón asignado'}
+                {curso?.salon && curso.salon.length > 0
+                  ? curso.salon.map((s) => s.nombre).join('; ')
+                  : 'Sin salón asignado'}
               </td>
               <td className="px-4 py-2">
-                {curso?.profesor
-                  ? `${curso.profesor.nombre} ${curso.profesor.apellido}`
+                {curso?.profesor && curso.profesor.length > 0
+                  ? curso.profesor.map((p) => `${p.nombre} ${p.apellido}`).join('; ')
                   : 'Sin profesor asignado'}
               </td>
             </tr>

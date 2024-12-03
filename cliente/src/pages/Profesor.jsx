@@ -1,4 +1,4 @@
-import { useProfesor } from "../context/ProfesorContent";
+import { useProfesor } from "../context/ProfesorContext";
 import { useEffect } from "react";
 import ProfesorCard from "../components/ProfesorCard";
 import { Link } from 'react-router-dom';

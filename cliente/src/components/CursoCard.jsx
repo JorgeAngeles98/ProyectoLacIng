@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useCurso } from "../context/CursoContent";
+import { useCurso } from "../context/CursoContext";
 import { Link } from "react-router-dom";
 
 function CursoCard({ curso }) {
@@ -9,15 +9,26 @@ function CursoCard({ curso }) {
         <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
             <header className='flex justify-between'>
                 <h1 className="text-2xl font-bold">{curso.nombre}</h1>
-                <div className='flex gap-x-2 items-center'>
+                <div className='flex flex-col gap-y-2 items-center'>
                     <Link to={`/curso/${curso._id}`}
-                        className='bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md'
-                    >Editar</Link>
-                    <button className='bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md'
+                        className='bg-gray-700 hover:bg-gray-800 text-white px-4 py-2 rounded-md'
+                    >   
+                        Editar
+                    </Link>
+                    <Link to={`/curso/asignar/${curso._id}`}
+                        className='bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-md'
+                    >   
+                        Asignar
+                    </Link>
+                    <button className='bg-red-700 hover:bg-red-900 text-white px-4 py-2 rounded-md'
                         onClick={() => {
                             deleteCurso(curso._id);
-                        }}>Eliminar</button>
+                        }}
+                    >
+                        Eliminar
+                    </button>
                 </div>
+
             </header>
             <p className="text-slate-300">{curso.codigo}</p>
             <p>{new Date(curso.dateinicio).toLocaleDateString()}</p>

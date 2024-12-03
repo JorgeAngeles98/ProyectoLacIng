@@ -1,4 +1,4 @@
-import { useCurso } from "../context/CursoContent";
+import { useCurso } from "../context/CursoContext";
 import { useEffect } from "react";
 import CursoCard from "../components/CursoCard";
 import { Link } from 'react-router-dom';

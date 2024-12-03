@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useProfesor } from "../context/ProfesorContent";
+import { useProfesor } from "../context/ProfesorContext";
 import { Link } from "react-router-dom";
 
 function ProfesorCard({ profesor }) {

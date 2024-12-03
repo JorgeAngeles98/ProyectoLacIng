@@ -1,6 +1,17 @@
 import { createContext, useContext, useState } from "react";
 import PropTypes from 'prop-types';
-import {createCursosRequest, getCursosRequest, deleteCursosRequest, getCursoRequest, updateCursosRequest, matricularAlumnoRequest, eliminarAlumnodeCursoRequest } from "../api/cursos";
+import {createCursosRequest, 
+    getCursosRequest, 
+    deleteCursosRequest, 
+    getCursoRequest, 
+    updateCursosRequest, 
+    matricularAlumnoRequest, 
+    eliminarAlumnodeCursoRequest,
+    asignarProfesorRequest,
+    eliminarProfesordeCursoRequest,
+    asignarSalonRequest,
+    eliminarSalondeCursoRequest
+ } from "../api/cursos";
 
 const CursoContext = createContext();
 
@@ -77,6 +88,42 @@ export function CursoProvider({children}){
         } 
     }
 
+    const asignarProfesor = async (id, curso) => {
+        try{
+            const res = await asignarProfesorRequest(id, curso);
+            return res;
+        }catch(error){
+            throw error;
+        } 
+    }
+
+    const eliminarProfesordeCurso = async (id, curso) => {
+        try{
+            const res = await eliminarProfesordeCursoRequest(id, curso);
+            return res;
+        }catch(error){
+            throw error;
+        } 
+    }
+
+    const asignarSalon = async (id, curso) => {
+        try{
+            const res = await asignarSalonRequest(id, curso);
+            return res;
+        }catch(error){
+            throw error;
+        } 
+    }
+
+    const eliminarSalondeCurso = async (id, curso) => {
+        try{
+            const res = await eliminarSalondeCursoRequest(id, curso);
+            return res;
+        }catch(error){
+            throw error;
+        } 
+    }
+
     return (
         <CursoContext.Provider value={{ 
             cursos, 
@@ -86,7 +133,11 @@ export function CursoProvider({children}){
             getCurso, 
             actualizarCurso,
             matricularAlumno,
-            eliminarAlumnodeCurso
+            eliminarAlumnodeCurso,
+            asignarProfesor,
+            eliminarProfesordeCurso,
+            asignarSalon,
+            eliminarSalondeCurso
         }}>
             {children}
         </CursoContext.Provider>

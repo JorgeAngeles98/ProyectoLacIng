@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useCurso } from '../../context/CursoContent';
+import { useCurso } from '../../context/CursoContext';
 import { useAlumno } from '../../context/AlumnoContext';
 import { toast } from 'react-toastify';
 import CursosTable from '../../components/CursosTable';

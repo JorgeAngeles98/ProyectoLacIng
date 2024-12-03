@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useCurso } from '../context/CursoContent';
+import { useCurso } from '../context/CursoContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 

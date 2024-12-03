@@ -10,20 +10,21 @@ import SalonFormPage from "./pages/SalonForm.jsx";
 import HomePage from "./pages/HomePage";
 import ProtectedRoute from "./ProtectedRoute";
 import CuentaPage from "./pages/CuentaPage";
-import { SalonProvider } from "./context/SalonContent.jsx";
+import { SalonProvider } from "./context/SalonContext.jsx";
 import { AlumnoProvider } from "./context/AlumnoContext.jsx";
 import NavBar from "./components/Navbar.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Curso from "./pages/Curso.jsx";
-import CursoForn from "./pages/CursoForn.jsx";
-import { CursoProvider } from "./context/CursoContent.jsx";
+import CursoForm from "./pages/CursoForm.jsx";
+import { CursoProvider } from "./context/CursoContext.jsx";
 import Profesor from "./pages/Profesor.jsx";
 import ProfesorForm from "./pages/ProfesorForm.jsx";
-import { ProfesorProvider } from "./context/ProfesorContent.jsx";
+import { ProfesorProvider } from "./context/ProfesorContext.jsx";
 import GestionarAlumnos from "./pages/Pages-Alumno/GestionarAlumnos.jsx";
 import AlumnoForm from "./pages/Pages-Alumno/AlumnoForm.jsx";
 import VerificarAlumno from "./pages/Pages-Alumno/VerificarAlumno.jsx";
 import MatricularAlumno from "./pages/Pages-Alumno/MatricularAlumno.jsx";
+import CursoAsign from "./pages/CursoAsign.jsx";
 
 
 function App() {
@@ -53,8 +54,9 @@ function App() {
                   <Route path="/salon/:id" element={<SalonFormPage />} />
 
                   <Route path="/curso" element={<Curso />} />
-                  <Route path="/agregar-curso" element={<CursoForn />} />
-                  <Route path="/curso/:id" element={<CursoForn />} />
+                  <Route path="/agregar-curso" element={<CursoForm />} />
+                  <Route path="/curso/:id" element={<CursoForm />} />
+                  <Route path="/curso/asignar/:id" element={<CursoAsign />} />
 
                   <Route path="/profesor" element={<Profesor />} />
                   <Route path="/agregar-profesor" element={<ProfesorForm />} />

@@ -9,7 +9,7 @@ const cursoSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     salon: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Salon' }], // Relación con Salón
     alumnos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Alumno' }], // Relación con Alumnos
-    profesor: { type: mongoose.Schema.Types.ObjectId, ref: 'Profesor', default: null }, // Relación con Profesor
+    profesor: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Profesor'}], // Relación con Profesor
 },{
     timestamps: true,
 });

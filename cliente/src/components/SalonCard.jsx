@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useSalon } from '../context/SalonContent';
+import { useSalon } from '../context/SalonContext';
 import { Link } from 'react-router-dom';
 
 function SalonCard({ salon }) {

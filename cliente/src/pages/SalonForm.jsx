@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { useSalon } from '../context/SalonContent';
+import { useSalon } from '../context/SalonContext';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 

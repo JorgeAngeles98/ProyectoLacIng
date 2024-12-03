@@ -1,4 +1,4 @@
-import { useSalon } from '../context/SalonContent';
+import { useSalon } from '../context/SalonContext';
 import { useEffect } from 'react';
 import SalonCard from '../components/SalonCard';
 import { Link } from 'react-router-dom';
