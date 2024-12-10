@@ -12,6 +12,8 @@ import cursosRoutes from "./routes/curso.routes.js";
 import profesoresRoutes from "./routes/profesor.routes.js";
 import alumnosRoutes from "./routes/alumno.routes.js";
 
+import pcRoutes from "./routes/pc.routes.js";
+
 const app = express()
 
 app.use(cors({
@@ -30,6 +32,7 @@ app.use("/api", salonesRoutes);
 app.use("/api", cursosRoutes);
 app.use("/api", profesoresRoutes);
 app.use("/api", alumnosRoutes)
+app.use("/api", pcRoutes)
 
 
 export default app;

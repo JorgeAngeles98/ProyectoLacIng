@@ -25,11 +25,17 @@ import AlumnoForm from "./pages/Pages-Alumno/AlumnoForm.jsx";
 import VerificarAlumno from "./pages/Pages-Alumno/VerificarAlumno.jsx";
 import MatricularAlumno from "./pages/Pages-Alumno/MatricularAlumno.jsx";
 import CursoAsign from "./pages/CursoAsign.jsx";
+import VProfesorPage from "./pages/VProfesorPage.jsx";
+import PcPage from "./pages/PCPage.jsx";
+import PcsBySalonPage from "./pages/PcsBySalonPage.jsx";
+import PcForm from "./pages/PcForm.jsx";
+import { PcProvider } from "./context/PcContext.jsx";
 
 
 function App() {
   return (
     <AuthProvider>
+      <PcProvider>
       <SalonProvider>
       <CursoProvider>
       <ProfesorProvider>
@@ -67,6 +73,13 @@ function App() {
                   <Route path="/form-alumno/:id" element={<AlumnoForm/>}/>
                   <Route path="/matricular-alumno/:id" element={<MatricularAlumno/>}/>
 
+                  <Route path="/pc" element={<PcPage />} />
+                  <Route path="/pcporsalon/:id" element={<PcsBySalonPage/>} />
+                  <Route path="/registrar-pc/:id" element={<PcForm/>} />
+
+                  <Route path="/visitante-profesor" element={<VProfesorPage />} />
+                  
+
                 </Route>
             </Routes>
             
@@ -76,6 +89,7 @@ function App() {
       </ProfesorProvider>
       </CursoProvider>
       </SalonProvider>
+      </PcProvider>
     </AuthProvider>
 
 
