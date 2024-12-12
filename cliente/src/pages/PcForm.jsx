@@ -14,6 +14,7 @@ function PcForm() {
     // Obtener el modo desde la ubicación o establecer un valor predeterminado
     const mode = new URLSearchParams(location.search).get('mode') || 'create';
     const [isReadOnly, setIsReadOnly] = useState(mode === 'view');
+    const [salonId, setSalonId] = useState(null);
     const titulos = {
         view: 'Datos de la PC',
         edit: 'Editar PC',
@@ -30,9 +31,16 @@ function PcForm() {
                 setValue('nombre', pc.nombre);
                 setValue('estado', pc.estado);
                 setValue('observacion', pc.observacion);
+                if (Array.isArray(pc.salon) && pc.salon.length > 0) {
+                    setSalonId(pc.salon[0]._id || pc.salon[0]); // Asigna el ID del primer salón en el arreglo
+                } else {
+                    setSalonId(pc.salon); // Asigna el ID del salón directamente si no es un arreglo
+                }
                 if (mode === 'view') {
                     setIsReadOnly(true);
                 }
+            } else if (mode === 'create') {
+                setSalonId(id); // Asigna el ID del salón desde la URL
             }
         }
         loadPc();
@@ -43,11 +51,11 @@ function PcForm() {
             if (mode === 'edit' && id) {
                 await updatePc(id, data);
                 toast.success('PC editada con éxito');
-                navigate(`/pcporsalon/${id}`);
+                navigate(`/pcporsalon/${salonId}`);
             } else if (mode === 'create') {
-                await createPc({ ...data, salon: id });
+                await createPc({ ...data, salon: salonId });
                 toast.success('PC creada con éxito');
-                navigate(`/pcporsalon/${id}`);
+                navigate(`/pcporsalon/${salonId}`);
             }
         } catch (error) {
             console.error("Algo salió mal al registrar la PC", error);
@@ -61,7 +69,7 @@ function PcForm() {
                 <form onSubmit={onSubmit}>
                     <button 
                         className='absolute top-2 right-10 text-2xl text-white hover:text-red-600' 
-                        onClick={() => navigate(`/pcporsalon/${id}`)}>
+                        onClick={() => navigate(`/pcporsalon/${salonId}`)}>
                         x
                     </button>
                     <h2 className="text-3xl font-bold my-2">{titulos[mode]}</h2>
