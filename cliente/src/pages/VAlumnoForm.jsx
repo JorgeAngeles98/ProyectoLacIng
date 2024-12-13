@@ -3,7 +3,7 @@ import { useVisitante } from '../context/VisitanteContext';
 import VisitantesForm from './VisitantesForm';
 import VisitantesTable from '../components/VisitantesTable';
 import { useParams } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function VAlumnoForm() {
@@ -26,14 +26,14 @@ function VAlumnoForm() {
     };
 
     return (
-        <div className="flex">
+        <div className="flex h-screen">
             <div className="w-1/4 pt-24">
                 <VisitantesForm onVisitanteAdded={handleVisitanteAdded} />
             </div>
-            <div className="w-1/4 p-20">
+            <div className="w-1/2 p-20">
                 <VisitantesTable onVisitanteFinalizado={handleVisitanteFinalizado} />
             </div>
-            <ToastContainer />
+            <ToastContainer position="bottom-right" />
         </div>
     );
 }

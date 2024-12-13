@@ -77,7 +77,7 @@ function VisitantesTable({ onVisitanteFinalizado }) {
                 <p className="text-white">No hay visitantes registrados.</p>
             )}
             {totalPages > 1 && (
-                <div className="flex justify-end mt-4 ml-96 -mr-80">
+                <div className="flex justify-end mt-4 ml-96">
                     <button
                         onClick={() => paginate(currentPage - 1)}
                         className={`px-3 py-1 mx-1 rounded ${currentPage === 1 ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-gray-300 text-black hover:bg-gray-400'}`}
