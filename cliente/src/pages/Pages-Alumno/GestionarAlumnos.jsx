@@ -30,10 +30,10 @@ function GestionarAlumnos() {
   return (
     <div>
       <div className="py-6 flex justify-between items-center">
-        <h1 className="text-3xl">Lista de Alumnos</h1>
+        <h1 className="text-3xl font-bold">Lista de Alumnos</h1>
         <Link
           to="/form-alumno?mode=create"
-          className="bg-green-800 w-60 py-3 rounded-sm text-xl font-bold text-center text-white"
+          className="bg-emerald-700 hover:bg-emerald-800 w-60 py-3 rounded-lg text-xl font-bold text-center text-white"
         >
           Agregar Alumno
         </Link>
@@ -42,7 +42,7 @@ function GestionarAlumnos() {
       <div className="relative overflow-visible">
         <table className="min-w-full bg-white border border-gray-300 text-slate-900">
           <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-emerald-600 text-white">
               <th className="py-2 px-4 border-b">Código</th>
               <th className="py-2 px-4 border-b">Nombre</th>
               <th className="py-2 px-4 border-b">Apellido</th>
@@ -56,8 +56,10 @@ function GestionarAlumnos() {
                 <td className="py-2 px-4 border-b">{alumno.nombreAlu}</td>
                 <td className="py-2 px-4 border-b">{alumno.apellidoAlu}</td>
                 <td className="py-2 px-4 border-b">
+
+                  {/* 
                   <Menu as="div" className="relative inline-block text-left">
-                    <Menu.Button className="inline-flex items-center gap-2 rounded-md bg-gray-800 py-1.5 px-3 text-sm font-semibold text-white shadow-inner hover:bg-gray-700 focus:outline-none">
+                    <Menu.Button className="inline-flex items-center gap-2 rounded-md bg-gray-700 py-1.5 px-3 text-sm font-semibold text-white shadow-inner hover:bg-gray-800 focus:outline-none">
                       Opciones
                       <ChevronDownIcon className="h-5 w-5 text-white/60" />
                     </Menu.Button>
@@ -117,6 +119,39 @@ function GestionarAlumnos() {
                       </Menu.Item>
                     </Menu.Items>
                   </Menu>
+                  */}
+                
+                  <div className="flex justify-center gap-4">
+                    <button
+                      onClick={() => handleNavigate(alumno._id, 'view')}
+                      className="inline-flex items-center justify-center rounded-md bg-blue-500 hover:bg-blue-800 py-1 px-1 text-white shadow-inner focus:outline-none"
+                    >
+                      <EyeIcon className="h-5 w-5 text-white/60" />
+                    </button>
+
+                    <button
+                      onClick={() => handleNavigate(alumno._id, 'edit')}
+                      className="inline-flex items-center justify-center rounded-md bg-amber-500 hover:bg-amber-600 py-1 px-1 text-white shadow-inner focus:outline-none"
+                    >
+                      <PencilIcon className="h-5 w-5 text-white/60" />
+                    </button>
+
+                    <button
+                      onClick={() => handleNavigate(alumno._id)}
+                      className="inline-flex items-center justify-center rounded-md bg-gray-700 hover:bg-gray-800  py-1 px-1 text-white shadow-inner focus:outline-none"
+                    >
+                      <ClipboardIcon className="h-5 w-5 text-white/60" />
+                    </button>
+
+                    <button
+                      onClick={() => handleDelete(alumno._id)}
+                      className="inline-flex items-center justify-center rounded-md bg-red-600 py-1 px-1 text-white shadow-inner hover:bg-red-700 focus:outline-none"
+                    >
+                      <TrashIcon className="h-5 w-5 text-white/60" />
+                    </button>
+                  </div>
+
+
                 </td>
 
               </tr>

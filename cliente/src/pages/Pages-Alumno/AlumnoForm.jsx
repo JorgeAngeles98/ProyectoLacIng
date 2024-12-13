@@ -73,11 +73,11 @@ function AlumnoForm() {
 
   return (
     <div className='flex items-center justify-center p-7 '>
-      <div className='bg-zinc-800 max-w-md w-full p-7 rounded-md relative'>
+      <div className='bg-white max-w-md w-full p-7 rounded-md relative'>
         <form onSubmit={onSubmit}>
             {/* Botón para cerrar formulario */}
             <button 
-                className='absolute top-2 right-10 text-2xl text-white hover:text-red-600' 
+                className='absolute top-2 right-10 text-3xl hover:text-red-600' 
                 onClick={() => navigate('/listado-alumnos')}>
                 x
             </button>
@@ -90,7 +90,7 @@ function AlumnoForm() {
             type='text'
             placeholder='Nombre'
             {...register('nombreAlu')}
-            className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+            className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
             autoFocus
             readOnly={isReadOnly}
           />
@@ -100,7 +100,7 @@ function AlumnoForm() {
             type='text'
             placeholder='Apellido'
             {...register('apellidoAlu')}
-            className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+            className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
             readOnly={isReadOnly}
           />
 
@@ -109,7 +109,7 @@ function AlumnoForm() {
             type='text'
             placeholder='codigo'
             {...register('codigo')}
-            className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+            className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
             readOnly={isReadOnly}
           />
 
@@ -118,7 +118,7 @@ function AlumnoForm() {
             type='dni'
             placeholder='dni'
             {...register('dni')}
-            className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+            className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
             readOnly={isReadOnly}
           />
 
@@ -127,7 +127,7 @@ function AlumnoForm() {
             type='text'
             placeholder='Facultad'
             {...register('facultad')}
-            className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+            className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
             readOnly={isReadOnly}
           />
 
@@ -136,12 +136,12 @@ function AlumnoForm() {
             type='text'
             placeholder='Correo'
             {...register('correoInst')}
-            className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+            className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
             readOnly={isReadOnly}
           />
             {/* Botón de Guardar para crear y editar views */}
           {mode !== 'view' && (
-            <button className='bg-green-800 px-3 py-2 rounded-md w-full mt-4'>Guardar</button>
+            <button className='bg-emerald-700 hover:bg-emerald-800 text-white px-3 py-2 rounded-md w-full mt-4'>Guardar</button>
           )}
 
           {/* Tabla Cursos Inscritos */}

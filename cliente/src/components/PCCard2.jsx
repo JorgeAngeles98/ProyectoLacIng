@@ -5,7 +5,7 @@ import { FaPlus } from 'react-icons/fa';
 function PCCard2({ pc }) {
 
     return (
-        <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
+        <div className="bg-white max-w-md w-full p-10 rounded-md">
             <header className='flex justify-between items-center'>
                 <h1 className="text-2xl font-bold">{pc.nombre}</h1>
                 <div className='flex gap-x-2'>

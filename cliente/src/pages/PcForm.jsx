@@ -65,7 +65,7 @@ function PcForm() {
 
     return (
         <div className="flex h-[calc(100vh-100px)] items-center justify-center">
-            <div className='bg-zinc-800 max-w-md w-full p-10 rounded-md'>
+            <div className='bg-white max-w-md w-full p-10 rounded-md'>
                 <form onSubmit={onSubmit}>
                     <button 
                         className='absolute top-2 right-10 text-2xl text-white hover:text-red-600' 
@@ -77,7 +77,7 @@ function PcForm() {
                     <input type="text"
                         placeholder='Marca'
                         {...register('marca')}
-                        className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+                        className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
                         autoFocus
                         readOnly={isReadOnly}
                     />
@@ -85,39 +85,39 @@ function PcForm() {
                     <input type="text"
                         placeholder='Serial'
                         {...register('serial')}
-                        className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+                        className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
                         readOnly={isReadOnly}
                     />
                     <label htmlFor="numpatrimonio">Número de Patrimonio: </label>
                     <input type="text"
                         placeholder='Número de Patrimonio'
                         {...register('numpatrimonio')}
-                        className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+                        className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
                         readOnly={isReadOnly}
                     />
                     <label htmlFor="nombre">Nombre: </label>
                     <input type="text"
                         placeholder='Nombre'
                         {...register('nombre')}
-                        className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+                        className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
                         readOnly={isReadOnly}
                     />
                     <label htmlFor="estado">Estado: </label>
                     <input type="text"
                         placeholder='Estado'
                         {...register('estado')}
-                        className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+                        className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
                         readOnly={isReadOnly}
                     />
                     <label htmlFor="observacion">Observación: </label>
                     <input type="text"
                         placeholder='Observación'
                         {...register('observacion')}
-                        className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+                        className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
                         readOnly={isReadOnly}
                     />
                     {mode !== 'view' && (
-                        <button type="submit" className="bg-indigo-500 px-3 py-2 my-2 rounded-md">Guardar</button>
+                        <button type="submit" className="bg-emerald-700 hover:bg-emerald-800 text-white px-3 py-2 my-2 rounded-md">Guardar</button>
                     )}
                 </form>
             </div>

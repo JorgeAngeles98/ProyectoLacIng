@@ -84,7 +84,7 @@ function CursoAsign() {
 
       {/* Información del curso */}
         {curso && (
-        <div className="border p-3 mb-6 rounded shadow">
+        <div className="bg-white border p-3 mb-6 rounded shadow">
             <h2 className="text-xl font-semibold pb-2">Información del curso:</h2>
             <p>
             <strong>Código:</strong> {curso.codigo}
@@ -206,7 +206,7 @@ function CursoAsign() {
       {/* Botón de regreso */}
       <div className="mb-4">
         <button
-          className="text-white bg-green-700 px-4 py-2 rounded hover:bg-gray-900"
+          className="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded"
           onClick={() => navigate('/curso')}
         >
           Volver a la lista de cursos

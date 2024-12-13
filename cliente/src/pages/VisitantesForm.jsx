@@ -29,41 +29,41 @@ function VisitantesForm({ onVisitanteAdded }) {
     });
 
     return (
-        <div className="bg-zinc-800 p-6 rounded-md shadow-md">
+        <div className="bg-white p-6 rounded-md shadow-md">
             <form onSubmit={onSubmit} className="text-left">
-                <h2 className="text-3xl font-bold my-2 text-white">Formulario Visitante</h2>
-                <label htmlFor="nombre" className="block text-white">Nombres: </label>
+                <h2 className="text-3xl font-bold my-2">Formulario Visitante</h2>
+                <label htmlFor="nombre" className="block">Nombres: </label>
                 <input type="text"
                     placeholder='Nombre'
                     {...register('nombre')}
-                    className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+                    className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
                     autoFocus
                 />
-                <label htmlFor="apellido" className="block text-white">Apellidos: </label>
+                <label htmlFor="apellido" className="block ">Apellidos: </label>
                 <input type="text"
                     placeholder='Apellido'
                     {...register('apellido')}
-                    className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+                    className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
                 />
-                <label htmlFor="codigo" className="block text-white">Codigo / DNI: </label>
+                <label htmlFor="codigo" className="block ">Codigo / DNI: </label>
                 <input type="text"
                     placeholder='Codigo'
                     {...register('codigo')}
-                    className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+                    className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
                 />
-                <label htmlFor="correo" className="block text-white">Correo: </label>
+                <label htmlFor="correo" className="block ">Correo: </label>
                 <input type="text"
                     placeholder='Correo'
                     {...register('correo')}
-                    className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+                    className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
                 />
-                <label htmlFor="actividad" className="block text-white">Actividad: </label>
+                <label htmlFor="actividad" className="block ">Actividad: </label>
                 <input type="text"
                     placeholder='Actividad'
                     {...register('actividad')}
-                    className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+                    className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
                 />
-                <button className="bg-indigo-500 px-3 py-2 my-2 rounded-md text-white">Guardar</button>
+                <button className="bg-emerald-700 hover:bg-emerald-800 text-white px-3 py-2 my-2 rounded-md ">Guardar</button>
             </form>
         </div>
     );

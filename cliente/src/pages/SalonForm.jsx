@@ -37,25 +37,25 @@ function SalonFormPage() {
 
   return (
     <dir className="flex h-[calc(100vh-100px)] items-center justify-center">
-      <div className='bg-zinc-800 max-w-md w-full p-8 rounded-md'>
+      <div className='bg-white max-w-md w-full p-8 rounded-md'>
         <form onSubmit={onSubmit}>
 
           <h2 className="text-3xl font-bold my-2">Formulario Salon</h2>
 
-          <label htmlFor="nombre">nombre: </label>
+          <label htmlFor="nombre">Nombre: </label>
           <input
             type='text'
             placeholder='Nombre'
             {...register('nombre')}
-            className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+            className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
             autoFocus
           />
 
-          <label htmlFor="descripcion">descripcion: </label>
+          <label htmlFor="descripcion">Descripción: </label>
           <textarea rows="3"
-            placeholder='Descripcion'
+            placeholder='Descripción'
             {...register('descripcion')}
-            className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
+            className='w-full bg-gray-100 px-4 py-2 rounded-md my-2'
           ></textarea>
 
           {/*<label htmlFor="capacidad">Capacidad: </label>
@@ -76,7 +76,7 @@ function SalonFormPage() {
             autoFocus
           />*/}
 
-          <button className="bg-indigo-500 px-3 py-2 my-2 rounded-md">Guardar</button>
+          <button className="bg-emerald-700 hover:bg-emerald-800 text-white px-3 py-2 my-2 rounded-md">Guardar</button>
         </form>
       </div>
     </dir>

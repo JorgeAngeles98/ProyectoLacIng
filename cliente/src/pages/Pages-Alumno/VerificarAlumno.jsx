@@ -62,7 +62,7 @@ function VerificarAlumno() {
       {alumnoData && (
         <div>
             <h3 className='text-2xl mb-4'>Detalles de Alumno</h3>
-            <div className='bg-gray-100 p-4 mb-6 text-black'>
+            <div className='bg-white p-4 mb-6 text-black'>
                 <p><strong>Código:</strong> {alumnoData.alumno.codigo}</p>
                 <p><strong>Nombre:</strong> {alumnoData.alumno.nombreAlu}</p>
                 <p><strong>Apellido:</strong> {alumnoData.alumno.apellidoAlu}</p>

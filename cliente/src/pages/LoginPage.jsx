@@ -17,13 +17,13 @@ function LoginPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/salon");
+      navigate("/dashboard");
     }
   }, [isAuthenticated]);
 
   return (
     <div className="flex h-[calc(100vh-100px)] items-center justify-center">
-      <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
+      <div className="bg-white max-w-md w-full p-10 rounded-md">
         {
           signinErrors.map((error, i) => (
             <div key={i} className="bg-red-500 p-2 text-white text-center my-2">
@@ -36,7 +36,7 @@ function LoginPage() {
           <h1 className="text-3xl font-bold my-2">Login</h1>
 
           <input type="email" {...register("email", { required: true })}
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+            className="w-full bg-white text-black px-4 py-2 rounded-md my-2"
             placeholder="Correo electrónico"
           />
           {
@@ -44,18 +44,18 @@ function LoginPage() {
               <p className="text-red-500">El email es requrido</p>
             )}
           <input type="password" {...register("password", { required: true })}
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
+            className="w-full bg-white text-black px-4 py-2 rounded-md my-2"
             placeholder="Contraseña"
           />
           {
             errors.password && (
               <p className="text-red-500">La contraseña es requrida</p>
             )}
-          <button className="bg-sky-500 text-white px-4 py-2 rounded-md my-2" type="sumit">Ingresar</button>
+          <button className="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-md my-2" type="sumit">Ingresar</button>
         </form>
 
             <p className="flex gap-x-2 justify-between">
-              No tienes cuenta? <Link to="/registro" className="text-sky-500">Registrate</Link>
+              No tienes cuenta? <Link to="/registro" className="text-emerald-700">Registrate</Link>
             </p>
 
       </div>

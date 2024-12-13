@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 function SVCard({ salon, link, mensaje }) {
     return (
         <div className="pt-5">
-            <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
+            <div className="bg-white max-w-md w-full p-10 rounded-md">
                 <header className='flex justify-between'>
                     <Link to={link}
-                        className='bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md'
+                        className='bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-md'
                     >
                         <h1 className="text-2xl font-bold">{salon.nombre}</h1>
                     </Link>
                 </header>
-                <p className="text-slate-300 pt-5">{mensaje}</p>
+                <p className="text-black pt-5">{mensaje}</p>
             </div>
         </div>
     );

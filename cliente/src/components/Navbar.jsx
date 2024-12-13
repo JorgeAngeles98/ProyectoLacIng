@@ -30,7 +30,7 @@ function Navbar() {
         <div>
             <div className='bg-emerald-700 flex justify-between items-center py-3 px-5 lg:px-10 shadow-md'>
                 <div className='flex items-center gap-x-4'>
-                    <Link to={isAuthenticated ? '/salon' : '/'}>
+                    <Link to={isAuthenticated ? '/dashboard' : '/'}>
                     <p className='text-white text-lg font-bold'>Universidad Ricardo Palma - Labicing</p>
                     </Link>
                 </div>

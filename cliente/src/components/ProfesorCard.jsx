@@ -6,7 +6,7 @@ function ProfesorCard({ profesor }) {
     const { deleteProfesor } = useProfesor();
 
     return (
-        <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
+        <div className="bg-white max-w-md w-full p-10 rounded-md">
             <header className='flex justify-between'>
                 <h1 className="text-2xl font-bold">{profesor.nombre} {profesor.apellido}</h1>
                 <div className='flex gap-x-2 items-center'>
@@ -19,7 +19,7 @@ function ProfesorCard({ profesor }) {
                         }}>Eliminar</button>
                 </div>
             </header>
-            <p className="text-slate-300">{profesor.codigo}</p>
+            <p className="text-black">{profesor.codigo}</p>
             <p>{profesor.correo}</p>
         </div>
     )

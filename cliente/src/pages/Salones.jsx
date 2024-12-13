@@ -13,7 +13,7 @@ function SalonesPage() {
   return (
     <div>
         <div className="py-6 flex justify-center">
-            <Link to='/agregar-salon' className='bg-indigo-500 w-full py-3 rounded-sm text-2xl font-bold text-center'>
+            <Link to='/agregar-salon' className='bg-emerald-700 hover:bg-emerald-800 text-white w-full py-3 rounded-sm text-2xl font-bold text-center'>
                 Agregar Salón
             </Link>
         </div>
