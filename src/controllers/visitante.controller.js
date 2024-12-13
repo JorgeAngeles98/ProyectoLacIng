@@ -11,7 +11,7 @@ export const getVisitantes = async (req, res) => {
 
 export const createVisitante = async (req, res) => {
     try {
-        const { nombre, apellido, codigo, correo, actividad, horaInicio, horaSalida, estado, observacion, rol, salon } = req.body;
+        const { nombre, apellido, codigo, correo, actividad, horaInicio, horaSalida, estado, observacion, pc, rol, salon } = req.body;
 
         const newVisitante = new Visitante({
             nombre,
@@ -23,6 +23,7 @@ export const createVisitante = async (req, res) => {
             horaSalida,
             estado,
             observacion,
+            pc,
             rol,
             salon,
             user: req.user.id,
@@ -61,5 +62,14 @@ export const deleteVisitante = async (req, res) => {
         return res.sendStatus(204);
     } catch (error) {
         return res.status(404).json({ message: "Visitante no encontrado" });
+    }
+};
+
+export const getVisitantesByPc = async (req, res) => {
+    try {
+        const visitantes = await Visitante.find({ pc: req.params.id }).populate('user').populate('pc');
+        res.json(visitantes);
+    } catch (error) {
+        return res.status(500).json({ message: "Algo salió mal" });
     }
 };

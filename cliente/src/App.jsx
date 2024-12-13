@@ -30,7 +30,11 @@ import PcPage from "./pages/PCPage.jsx";
 import PcsBySalonPage from "./pages/PcsBySalonPage.jsx";
 import PcForm from "./pages/PcForm.jsx";
 import { PcProvider } from "./context/PcContext.jsx";
+import VAlumnoPage from "./pages/VAlumnoPage.jsx";
+import VAlumnoSalonPage from "./pages/VAlumnoSalonPage.jsx";
+import VAlumnoForm from "./pages/VAlumnoForm.jsx";
 
+import { VisitanteProvider } from "./context/VisitanteContext.jsx";
 
 function App() {
   return (
@@ -38,6 +42,7 @@ function App() {
       <PcProvider>
       <SalonProvider>
       <CursoProvider>
+      <VisitanteProvider>
       <ProfesorProvider>
       <AlumnoProvider>
         <BrowserRouter>
@@ -78,6 +83,10 @@ function App() {
                   <Route path="/registrar-pc/:id" element={<PcForm/>} />
 
                   <Route path="/visitante-profesor" element={<VProfesorPage />} />
+
+                  <Route path="/visitante-alumno" element={<VAlumnoPage />} />
+                  <Route path="/visitante-alumno/salon/:id" element={<VAlumnoSalonPage/>} />
+                  <Route path="/visitante-alumno/salon/pc/:id" element={<VAlumnoForm/>} />
                   
 
                 </Route>
@@ -87,6 +96,7 @@ function App() {
         </BrowserRouter>
       </AlumnoProvider>
       </ProfesorProvider>
+      </VisitanteProvider>
       </CursoProvider>
       </SalonProvider>
       </PcProvider>

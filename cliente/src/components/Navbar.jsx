@@ -72,7 +72,7 @@ function Navbar() {
                                         Visitante Alumno
                                     </Link>
                                 </li>
-                                <li>
+                                {/* <li>
                                     <Link
                                         to='/visitante-profesor'
                                         className='text-gray-800 hover:text-emerald-700 px-4 py-2 rounded-md transition duration-300 flex items-center gap-x-2'
@@ -80,7 +80,7 @@ function Navbar() {
                                         <GiTeacher />
                                         Visitante Profesor
                                     </Link>
-                                </li>
+                                </li>*/}
                                 <li>
                                     <Link
                                         to='/pc'
