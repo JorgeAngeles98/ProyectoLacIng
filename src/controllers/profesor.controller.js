@@ -9,15 +9,34 @@ export const getProfesores = async (req, res) => {
     }
 };
 
+export const getProfesoresActivos = async (req, res) => {
+    try {
+        const profesoresActivos = await Profesor.find({ estado: "Activo" }).populate('user');
+        res.json(profesoresActivos);
+    } catch (error) {
+        return res.status(500).json({ message: "Algo salio mal" });
+    }
+};
+
+export const getProfesoresInactivos = async (req, res) => {
+    try {
+        const profesoresInactivos = await Profesor.find({ estado: "Inactivo" }).populate('user');
+        res.json(profesoresInactivos);
+    } catch (error) {
+        return res.status(500).json({ message: "Algo salio mal" });
+    }
+};
+
 export const createProfesor = async (req, res) => {
     try{
-        const {nombre, apellido, codigo, correo} = req.body;
+        const {nombre, apellido, codigo, estado, correo} = req.body;
 
         const newProfesor = new Profesor({
             nombre,
             apellido,
             codigo,
             correo,
+            estado,
             user: req.user.id,
         });
         const savedProfesor = await newProfesor.save();

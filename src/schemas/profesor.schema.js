@@ -13,4 +13,5 @@ export const createProfesorSchema = z.object({
     correo: z.string({
         required_error: "El correo es requerido",
     }),
+    estado: z.string().optional(),
 });

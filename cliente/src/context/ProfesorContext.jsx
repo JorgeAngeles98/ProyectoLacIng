@@ -1,6 +1,14 @@
 import { createContext, useContext, useState } from "react";
 import PropTypes from 'prop-types';
-import {createProfesorRequest, getProfesoresRequest, deleteProfesorRequest, getProfesorRequest, updateProfesorRequest } from "../api/profesores";
+import { 
+    createProfesorRequest, 
+    getProfesoresRequest, 
+    deleteProfesorRequest, 
+    getProfesorRequest, 
+    updateProfesorRequest,
+    getProfesoresActivosRequest,
+    getProfesoresInactivosRequest
+} from "../api/profesores";
 
 const ProfesorContext = createContext();
 
@@ -20,6 +28,24 @@ export function ProfesorProvider({children}){
     const getProfesores = async () => {
         try {
             const res = await getProfesoresRequest();
+            setProfesores(res.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const getProfesoresActivos = async () => {
+        try {
+            const res = await getProfesoresActivosRequest();
+            setProfesores(res.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const getProfesoresInactivos = async () => {
+        try {
+            const res = await getProfesoresInactivosRequest();
             setProfesores(res.data);
         } catch (error) {
             console.error(error);
@@ -63,10 +89,13 @@ export function ProfesorProvider({children}){
         <ProfesorContext.Provider value={{ 
             profesores, 
             getProfesores, 
+            getProfesoresActivos,
+            getProfesoresInactivos,
             createProfesor, 
             deleteProfesor, 
             getProfesor, 
-            updateProfesor 
+            updateProfesor,
+            getProfesoresRequest
         }}>
             {children}
         </ProfesorContext.Provider>

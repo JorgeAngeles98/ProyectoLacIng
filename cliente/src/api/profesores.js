@@ -3,6 +3,12 @@ import axios from './axios';
 export const getProfesoresRequest = 
 () => axios.get('/profesor');
 
+export const getProfesoresActivosRequest = 
+() => axios.get('/profesor/activos');
+
+export const getProfesoresInactivosRequest = 
+() => axios.get('/profesor/inactivos');
+
 export const createProfesorRequest = 
 (profesor) => axios.post("/profesor", profesor);
 

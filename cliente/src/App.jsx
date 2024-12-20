@@ -35,6 +35,7 @@ import VAlumnoSalonPage from "./pages/VAlumnoSalonPage.jsx";
 import VAlumnoForm from "./pages/VAlumnoForm.jsx";
 
 import { VisitanteProvider } from "./context/VisitanteContext.jsx";
+import ProfesorInactivo from "./pages/ProfesorInactivo.jsx";
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
                   <Route path="/profesor" element={<Profesor />} />
                   <Route path="/agregar-profesor" element={<ProfesorForm />} />
                   <Route path="/profesor/:id" element={<ProfesorForm />} />
+                  <Route path="/profesor/inactivo" element={<ProfesorInactivo />} />
 
                   <Route path="/listado-alumnos" element={<GestionarAlumnos/>}/>
                   <Route path="/form-alumno" element={<AlumnoForm/>}/>

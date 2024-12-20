@@ -5,6 +5,7 @@ const profesorSchema = new mongoose.Schema({
     apellido:{ type: String, required: true },
     codigo:{ type: String, required: true },
     correo: { type: String, required: true },
+    estado: { type: String, default: "Activo" },
     user:{ type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
 },{
     timestamps: true,
