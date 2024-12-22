@@ -66,12 +66,12 @@ function MatricularAlumno() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4 mt-2">Matricular Alumno</h1>
+      <h1 className="text-3xl font-bold mb-4 mt-2">Asignar Alumno</h1>
 
       <div className="relative mb-6">
         {/* Botón para cerrar */}
         <button
-          className="absolute right-0 text-2xl text-white hover:text-red-600"
+          className="absolute right-0 text-2xl hover:text-red-600"
           onClick={() => navigate('/listado-alumnos')}
         >
           x
@@ -105,7 +105,7 @@ function MatricularAlumno() {
               onClick={(e) => handleSubmit(e, 'matricular')} // Matricular
               className="bg-green-600 text-white px-4 py-2 rounded disabled:bg-gray-700"
             >
-              Matricular
+              Asignar
             </button>
 
             {/* Botón para eliminar */}

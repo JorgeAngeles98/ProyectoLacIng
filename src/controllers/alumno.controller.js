@@ -23,14 +23,31 @@ export const createAlumno = async (req, res) => {
             facultad,
             correoInst,
         });
+
         const savedAlumno = await newAlumno.save();
-        res.json(savedAlumno);
+        res.status(201).json(savedAlumno);
+
     } catch (error) {
-        if (error instanceof z.ZodError) {
-            return res.status(400).json({ errors: error.errors });
+        const errors = [];
+        // Verificar si es un error de duplicados (MongoDB error code 11000)
+        if (error.code === 11000) {
+            const field = Object.keys(error.keyValue)[0];
+            errors.push({ message: `El campo ${field} ya está en uso. Debe ser único.` });
         }
-        else return res.status(500).json({ message: "Algo salió mal" });
+
+        if (error instanceof z.ZodError) {
+            error.errors.forEach((zodError) => {
+                errors.push({ message: zodError.message });
+            });
+        }
+        // Si hay errores acumulados, enviarlos
+        if (errors.length > 0) {
+            return res.status(400).json({ errors });
+        }
+        
+        res.status(500).json({ message: "Algo salió mal", error });
     }
+
 };
 
 export const getAlumno = async (req, res) => {
@@ -82,10 +99,25 @@ export const updateAlumno = async (req, res) => {
 
 export const deleteAlumno = async (req, res) => {
     try {
-        const alumno = await Alumno.findByIdAndDelete(req.params.id);
-        if (!alumno) return res.status(404).json({ message: "Alumno no encontrado" });
-        return res.sendStatus(204);
+        const alumnoId = req.params.id;
+
+        const alumno = await Alumno.findById(alumnoId);
+        if (!alumno) {
+            return res.status(404).json({ message: "Alumno no encontrado" });
+        }
+
+        const cursos = await Curso.find({ alumnos: alumnoId });
+        for (const curso of cursos) {
+            curso.alumnos = curso.alumnos.filter(
+                (alumno) => alumno.toString() !== alumnoId
+            );
+            await curso.save();
+        }
+        await Alumno.findByIdAndDelete(alumnoId);
+
+        res.status(200).json({ message: "Alumno eliminado con éxito" });
     } catch (error) {
-        return res.status(404).json({ message: "Alumno no encontrado" });
+        console.error(error);
+        res.status(500).json({ message: "Error al eliminar el alumno", error });
     }
 };
