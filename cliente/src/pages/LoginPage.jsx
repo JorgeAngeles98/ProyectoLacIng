@@ -36,7 +36,7 @@ function LoginPage() {
           <h1 className="text-3xl font-bold my-2">Login</h1>
 
           <input type="email" {...register("email", { required: true })}
-            className="w-full bg-white text-black px-4 py-2 rounded-md my-2"
+            className="w-full bg-gray-100 text-black px-4 py-2 rounded-md my-2"
             placeholder="Correo electrónico"
           />
           {
@@ -44,7 +44,7 @@ function LoginPage() {
               <p className="text-red-500">El email es requrido</p>
             )}
           <input type="password" {...register("password", { required: true })}
-            className="w-full bg-white text-black px-4 py-2 rounded-md my-2"
+            className="w-full bg-gray-100 text-black px-4 py-2 rounded-md my-2"
             placeholder="Contraseña"
           />
           {

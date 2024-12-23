@@ -12,7 +12,7 @@ function SalonCard({ salon }) {
                 <h1 className="text-2xl font-bold">{salon.nombre}</h1>
                 <div className='flex gap-x-2 items-center'>
                     <Link  to={`/salon/${salon._id}`}
-                    className='bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md'
+                    className='bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-md'
                     >Editar</Link>
                     <button className='bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md' 
                         onClick={() => {

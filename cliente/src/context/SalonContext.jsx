@@ -59,6 +59,16 @@ export function SalonProvider({ children }) {
             
     }
 
+    const checkDuplicateName = async (nombre) => {
+        try {
+            const salones = await getSalonesRequest();
+            return salones.data.some(salon => salon.nombre === nombre);
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
+    };
+
 
     return (
         <SalonContext.Provider value={{
@@ -68,6 +78,7 @@ export function SalonProvider({ children }) {
             deleteSalon,
             getSalon,
             actuzaliarSalon,
+            checkDuplicateName,
         }}>
             {children}
         </SalonContext.Provider>
