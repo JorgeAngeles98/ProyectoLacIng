@@ -33,7 +33,7 @@ function CursosTable({ cursos }) {
           </tbody>
         </table>
       ) : (
-        <p className="text-white">No hay cursos inscritos.</p>
+        <p>No hay cursos inscritos.</p>
       )}
     </div>
   );

@@ -60,15 +60,14 @@ function AlumnoForm() {
         navigate('/listado-alumnos');
 
     } catch (error) {
-        if (error.response && error.response.data) {
-            error.response.data.forEach((errMessage) => {
-              toast.error(errMessage); // Muestra los errores de validación
-            });
-          } else {
-            // Error general
-            toast.error("Ha ocurrido un error en el servidor.");
-          }
-    }
+      if (error.response && error.response.data && error.response.data.errors) {
+          error.response.data.errors.forEach((err) => {
+              toast.error(err.message); // Muestra cada mensaje de error
+          });
+      } else {
+          toast.error("Ha ocurrido un error en el servidor.");
+      }
+  }
   });
 
   return (

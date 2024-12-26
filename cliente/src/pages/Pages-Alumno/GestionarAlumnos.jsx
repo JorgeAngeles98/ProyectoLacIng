@@ -2,8 +2,7 @@ import { useAlumno } from '../../context/AlumnoContext';
 import { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { ChevronDownIcon, PencilIcon, TrashIcon, EyeIcon, ClipboardIcon } from '@heroicons/react/24/solid'; // Ajusta según tus íconos disponibles.
-import { Menu } from '@headlessui/react';
+import { PencilIcon, TrashIcon, EyeIcon, ClipboardIcon } from '@heroicons/react/24/solid';
 
 function GestionarAlumnos() {
   const { getAlumnos, alumnos, deleteAlumno } = useAlumno();
@@ -13,10 +12,16 @@ function GestionarAlumnos() {
     getAlumnos();
   }, []);
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm('¿Estás seguro de que deseas eliminar este alumno?')) {
-      deleteAlumno(id);
-      toast.success('Alumno eliminado con éxito');
+      try {
+        await deleteAlumno(id);
+        toast.success('Alumno eliminado con éxito');
+        getAlumnos();
+      } catch (error) {
+        toast.error('Error al eliminar el alumno');
+        console.error(error);
+      }
     }
   };
 
