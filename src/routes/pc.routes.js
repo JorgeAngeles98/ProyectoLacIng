@@ -6,7 +6,12 @@ import {
     getPc,
     updatePc,
     deletePc,
-    getPcsBySalon
+    getPcsBySalon,
+    getPcsBySalonOpIno,
+    countPcsBySalonOpIno,
+    getPcsBySalonDDB,
+    getPcsActivos,
+    getPcsDDB
 } from "../controllers/pc.controller.js";
 import { validatorSchema } from "../middlewares/validator.middlewares.js";
 import { createPcSchema } from "../schemas/pc.schema.js";
@@ -19,5 +24,14 @@ router.post('/pc', authRequired, validatorSchema(createPcSchema), createPc);
 router.delete('/pc/:id', authRequired, deletePc);
 router.put('/pc/:id', authRequired, updatePc);
 router.get('/pcsalon/:id', authRequired, getPcsBySalon);
+
+// Nuevas rutas
+router.get('/opino/:id', authRequired, getPcsBySalonOpIno);
+router.get('/countopino/:id', authRequired, countPcsBySalonOpIno);
+router.get('/ddb/:id', authRequired, getPcsBySalonDDB);
+
+// Nuevas rutas para obtener todas las PCs activas y dadas de baja
+router.get('/pc-activos', authRequired, getPcsActivos);
+router.get('/pc-ddb', authRequired, getPcsDDB);
 
 export default router;

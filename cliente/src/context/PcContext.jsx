@@ -1,7 +1,18 @@
 import { createContext, useContext, useState } from "react";
 import PropTypes from 'prop-types';
-import {createPcRequest, getPcsRequest, deletePcRequest, getPcRequest, updatePcRequest, getPcsBySalonRequest } from "../api/pc";
-import { get } from "mongoose";
+import {
+    createPcRequest,
+    getPcsRequest,
+    deletePcRequest,
+    getPcRequest,
+    updatePcRequest,
+    getPcsBySalonRequest,
+    getPcsBySalonOpInoRequest,
+    countPcsBySalonOpInoRequest,
+    getPcsBySalonDDBRequest,
+    getPcsActivosRequest,
+    getPcsDDBRequest
+} from "../api/pc";
 
 const PcContext = createContext();
 
@@ -36,7 +47,6 @@ export function PcProvider({children}){
         try {
             const res = await deletePcRequest(id);
             if (res.status === 204) setPcs(pcs.filter(Pc => Pc._id !== id));
-
         } catch (error) {
             console.error(error);
         }
@@ -57,12 +67,58 @@ export function PcProvider({children}){
         }catch(error){
             console.error(error);
         }
-            
     };
 
     const getPcsBySalon = async (id) => {
         try {
             const res = await getPcsBySalonRequest(id);
+            setPcs(res.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const getPcsBySalonOpIno = async (id) => {
+        try {
+            const res = await getPcsBySalonOpInoRequest(id);
+            setPcs(res.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const countPcsBySalonOpIno = async (id) => {
+        try {
+            const res = await countPcsBySalonOpInoRequest(id);
+            return res.data.count;
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const getPcsBySalonDDB = async (id) => {
+        try {
+            const res = await getPcsBySalonDDBRequest(id);
+            setPcs(res.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    // Nueva función: Obtener todas las PCs con estado "Operativo" e "Inoperativo"
+    const getPcsActivos = async () => {
+        try {
+            const res = await getPcsActivosRequest();
+            setPcs(res.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    // Nueva función: Obtener todas las PCs con estado "Dado de baja"
+    const getPcsDDB = async () => {
+        try {
+            const res = await getPcsDDBRequest();
             setPcs(res.data);
         } catch (error) {
             console.error(error);
@@ -77,7 +133,12 @@ export function PcProvider({children}){
             deletePc, 
             getPc, 
             updatePc,
-            getPcsBySalon 
+            getPcsBySalon,
+            getPcsBySalonOpIno,
+            countPcsBySalonOpIno,
+            getPcsBySalonDDB,
+            getPcsActivos,
+            getPcsDDB
         }}>
             {children}
         </PcContext.Provider>

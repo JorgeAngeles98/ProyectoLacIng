@@ -17,3 +17,19 @@ export const getPcRequest =
 
 export const getPcsBySalonRequest = 
 (id) => axios.get(`/pcsalon/${id}`);
+
+export const getPcsBySalonOpInoRequest = 
+(id) => axios.get(`/opino/${id}`);
+
+export const countPcsBySalonOpInoRequest = 
+(id) => axios.get(`/countopino/${id}`);
+
+export const getPcsBySalonDDBRequest = 
+(id) => axios.get(`/ddb/${id}`);
+
+// Nuevas solicitudes
+export const getPcsActivosRequest = 
+() => axios.get('/pc-activos');
+
+export const getPcsDDBRequest = 
+() => axios.get('/pc-ddb');

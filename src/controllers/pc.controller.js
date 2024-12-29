@@ -68,3 +68,53 @@ export const getPcsBySalon = async (req, res) => {
         return res.status(500).json({ message: "Algo salió mal" });
     }
 };
+
+// Nuevo método: Obtener PCs por salón con estado "Operativo" e "Inoperativo"
+export const getPcsBySalonOpIno = async (req, res) => {
+    try {
+        const pcs = await Pc.find({ salon: req.params.id, estado: { $in: ['Operativo', 'Inoperativo'] } }).populate('user').populate('salon');
+        res.json(pcs);
+    } catch (error) {
+        return res.status(500).json({ message: "Algo salió mal" });
+    }
+};
+
+// Nuevo método: Contar PCs por salón con estado "Operativo" e "Inoperativo"
+export const countPcsBySalonOpIno = async (req, res) => {
+    try {
+        const count = await Pc.countDocuments({ salon: req.params.id, estado: { $in: ['Operativo', 'Inoperativo'] } });
+        res.json({ count });
+    } catch (error) {
+        return res.status(500).json({ message: "Algo salió mal" });
+    }
+};
+
+// Nuevo método: Obtener PCs por salón con estado "Dado de baja"
+export const getPcsBySalonDDB = async (req, res) => {
+    try {
+        const pcs = await Pc.find({ salon: req.params.id, estado: 'Dado de baja' }).populate('user').populate('salon');
+        res.json(pcs);
+    } catch (error) {
+        return res.status(500).json({ message: "Algo salió mal" });
+    }
+};
+
+// Nuevo método: Obtener todas las PCs con estado "Operativo" e "Inoperativo"
+export const getPcsActivos = async (req, res) => {
+    try {
+        const pcs = await Pc.find({ estado: { $in: ['Operativo', 'Inoperativo'] } }).populate('user').populate('salon');
+        res.json(pcs);
+    } catch (error) {
+        return res.status(500).json({ message: "Algo salió mal" });
+    }
+};
+
+// Nuevo método: Obtener todas las PCs con estado "Dado de baja"
+export const getPcsDDB = async (req, res) => {
+    try {
+        const pcs = await Pc.find({ estado: 'Dado de baja' }).populate('user').populate('salon');
+        res.json(pcs);
+    } catch (error) {
+        return res.status(500).json({ message: "Algo salió mal" });
+    }
+};
